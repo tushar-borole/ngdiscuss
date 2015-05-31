@@ -8,7 +8,7 @@
  *
  */
 function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
-    $urlRouterProvider.otherwise("/index/main");
+    $urlRouterProvider.otherwise("/index/blog");
 
     $ocLazyLoadProvider.config({
         // Set to true if you want to see what and when is dynamically loaded
@@ -22,8 +22,8 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
             url: "/index",
             templateUrl: "views/common/content.html",
         })
-        .state('index.main', {
-            url: "/main",
+        .state('index.blog', {
+            url: "/blog",
             templateUrl: "views/main.html",
             data: { pageTitle: 'Example view' }
         })
