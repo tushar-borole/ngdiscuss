@@ -1,0 +1,69 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Blog</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+            <li>
+                <a>App views</a>
+            </li>
+            <li class="active">
+                <strong>Blog</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+
+
+<div class="wrapper wrapper-content  animated fadeInRight">
+<div class="row">
+   <div class="col-lg-12">
+            <div class="mail-box-header">
+                <div class="pull-right tooltip-demo">
+                
+                </div>
+                <h2>
+                    Compose Blog
+                </h2>
+            </div>
+            <div class="mail-box">
+
+
+                <div class="mail-body">
+
+                    <form class="form-horizontal" method="get">
+                        <div class="form-group"><label class="col-sm-2 control-label">To:</label>
+
+                            <div class="col-sm-10"><input ng-model="createblog.title" type="text" class="form-control"></div>
+                        </div>
+                        <div class="form-group"><label class="col-sm-2 control-label">Subject:</label>
+
+                            <div class="col-sm-10"><input ng-model="createblog.tags" type="text" class="form-control"></div>
+                        </div>
+                    </form>
+
+                </div>
+
+                <div class="mail-text h-200">
+
+                    <div summernote class="summernote"  ng-model="createblog.body">
+                  
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="mail-body text-right tooltip-demo">
+                    <a ng-click="createBlog()" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Send"><i class="fa fa-reply"></i> Save</a>
+                    <a ui-sref="inbox" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Discard email"><i class="fa fa-times"></i> Discard</a>
+                  
+                </div>
+                <div class="clearfix"></div>
+
+
+            </div>
+        </div>
+</div>
+</div>
