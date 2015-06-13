@@ -1,0 +1,19 @@
+<div ng-controller="CommentCtrl">
+<div class="chat-discussion">
+
+    <div class="chat-message" ng-repeat="data in commentData">
+        <img class="message-avatar" src="../images/a1.jpg" alt="">
+        <div class="message">
+            <a class="message-author" href="#"> Michael Smith </a>
+            <span class="message-date"> Mon Jan 26 2015 - 18:39:23 </span>
+            <span class="message-content">{{data.body}}
+                                            </span>
+        </div>
+    </div>
+    
+</div>
+<div class="input-group input-group-sm">
+    <input type="text" ng-model="comment.body" class="form-control"> <span class="input-group-btn"> <button type="button" class="btn btn-primary" ng-click="addComment()">Send
+        </button> </span>
+</div>
+</div>

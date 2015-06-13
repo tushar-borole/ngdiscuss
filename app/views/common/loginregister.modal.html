@@ -9,39 +9,39 @@
     <div id="signup">
       <h1>Sign Up for Free</h1>
 
-      <form action="/" method="post">
+      <form>
 
         <div class="top-row">
           <div class="field-wrap">
             <label>
               First Name<span class="req">*</span>
             </label>
-            <input ng-model="login.username" type="text" required autocomplete="off" />
+            <input ng-model="register.firstname" type="text" required autocomplete="off" />
           </div>
 
           <div class="field-wrap">
             <label>
               Last Name<span class="req">*</span>
             </label>
-            <input type="text" required autocomplete="off" />
+            <input ng-model="register.lastname" type="text" required autocomplete="off" />
           </div>
         </div>
 
         <div class="field-wrap">
           <label>
-            Email Address<span class="req">*</span>
+            Username<span class="req">*</span>
           </label>
-          <input type="email" required autocomplete="off" />
+          <input type="text" ng-model="register.username" required autocomplete="off" />
         </div>
 
         <div class="field-wrap">
           <label>
             Set A Password<span class="req">*</span>
           </label>
-          <input type="password" required autocomplete="off" />
+          <input type="password" ng-model="register.password" required autocomplete="off" />
         </div>
 
-        <button type="submit" class="button button-block">Get Started</button>
+        <button ng-click="registerUser()" type="submit" class="button button-block">Get Started</button>
 
       </form>
 

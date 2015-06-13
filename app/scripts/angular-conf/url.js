@@ -5,10 +5,13 @@ Copyright:Karma Worldwide Inc. 2014*/
 app.constant('APP_URL', {
     'development': {
         'loginuser': 'api/login',
+        'registeruser': 'api/user',
         'loggedinuser': 'api/v1/users/loggedInUser',
         'getblog': 'api/blog',
         'createblog':'api/blog',
-         'getblogdetails':'api/blog/{{blogid}}'
+         'getblogdetails':'api/blog/{{blogid}}',
+        'createcomment':'api/blog/{{blogid}}/comment',
+        'getcomment':'api/blog/{{blogid}}/comment'
 
     },
     'mock': {

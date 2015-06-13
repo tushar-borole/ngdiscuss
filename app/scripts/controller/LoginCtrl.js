@@ -37,7 +37,7 @@ function ($scope, $http, dataFactory, ipCookie, notify, $translate, ngFabForm, $
         $scope.registerUser = function () {
 
             dataFactory.registerUser($scope.register).then(function () {
-
+                $scope.loginmodal.dismiss();
             }, function () {
 
             });

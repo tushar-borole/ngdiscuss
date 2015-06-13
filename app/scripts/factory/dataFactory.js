@@ -56,10 +56,10 @@ Copyright:Karma Worldwide Inc. 2014*/
                  return Restangular[postType.value](url)[postType.type](data);
 
              },
-             getRoles: function () {
-                 var url = APP_URL[APP_CONFIG.urlenv].getrole;
-                 var postType = restangularParams('getList', APP_CONFIG.urlenv);
-                 return Restangular[postType.value](url)[postType.type]().$object;
+             registerUser: function (data) {
+                 var url = APP_URL[APP_CONFIG.urlenv].registeruser;
+                 var postType = restangularParams('post', APP_CONFIG.urlenv);
+                 return Restangular[postType.value](url)[postType.type](data);
 
              }
          };
@@ -99,3 +99,21 @@ app.factory('blogdetailsFactory', ['Restangular', 'APP_URL', 'APP_CONFIG',
              }
          };
     }]);
+
+
+app.factory('commentFactory', ['Restangular', 'APP_URL', 'APP_CONFIG',
+    function (Restangular, APP_URL, APP_CONFIG) {
+         return {
+             addComment: function (blodid,data) {
+                 var url = APP_URL[APP_CONFIG.urlenv].createcomment.replace("{{blogid}}",blodid);
+                 var postType = restangularParams('post', APP_CONFIG.urlenv);
+                 return Restangular[postType.value](url)[postType.type](data);
+             },
+              getComment: function (blodid) {
+                 var url = APP_URL[APP_CONFIG.urlenv].getcomment.replace("{{blogid}}",blodid);
+                 var postType = restangularParams('get', APP_CONFIG.urlenv);
+                 return Restangular[postType.value](url)[postType.type]();
+             }
+         };
+    }]);
+
