@@ -13,13 +13,15 @@ function ($scope, $http, ipCookie, $state, APP_CONSTANTVALUE, createblogFactory)
 
 
 
-        $scope.createBlog = function () {
+        $scope.createBlog = function (isValid) {
+            if (isValid) {
 
-            createblogFactory.createBlog($scope.createblog).then(function () {
-                $state.go('index.blog')
-            }, function () {
+                createblogFactory.createBlog($scope.createblog).then(function () {
+                    $state.go('index.blog')
+                }, function () {
 
-            });
+                });
+            }
 
 
         };

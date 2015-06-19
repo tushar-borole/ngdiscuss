@@ -30,7 +30,7 @@
                     Compose Blog
                 </h2>
             </div>
-       <form class="form-horizontal">
+       <form class="form-horizontal" name="composeBlog">
             <div class="mail-box">
 
 
@@ -55,9 +55,10 @@
                   
                     </div>
                     <div class="clearfix"></div>
+                    <input ng-minlength="400"  ng-model="createblog.body" type="text" class="form-control ng-hide" required>
                 </div>
                 <div class="mail-body text-right tooltip-demo">
-                    <a ng-click="createBlog()" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Send"><i class="fa fa-reply"></i> Save</a>
+                    <button type="submit" ng-click="createBlog(composeBlog.$valid)" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Send"><i class="fa fa-reply"></i> Save</button>
                     <a ui-sref="inbox" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Discard email"><i class="fa fa-times"></i> Discard</a>
                   
                 </div>
