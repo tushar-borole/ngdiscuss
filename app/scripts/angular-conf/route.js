@@ -109,7 +109,7 @@ app
         };
     
       $rootScope.$on('ngPermission', function (event,roles, defer,routeObject) {
-     $http.defaults.headers.common[APP_CONSTANTVALUE.token] = ipCookie('auth');
+     $http.defaults.headers.common[APP_CONSTANTVALUE.token] = ipCookie('auth').token;
          defer.resolve();
        
     });

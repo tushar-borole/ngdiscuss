@@ -8,7 +8,7 @@ Copyright:Karma Worldwide Inc. 2014*/
 app.controller('CommentCtrl', ['$scope', '$rootScope', 'dataFactory', 'ipCookie', 'notify', '$translate', 'ngFabForm', '$state', 'APP_CONSTANTVALUE', '$timeout','commentFactory','ipCookie','$http',
 function ($scope, $rootScope, dataFactory, ipCookie, notify, $translate, ngFabForm, $state, APP_CONSTANTVALUE, $timeout,commentFactory,ipCookie,$http) {
 
-    $http.defaults.headers.common[APP_CONSTANTVALUE.token] = ipCookie('auth');
+
         /*Initialization of variable start*/
         $scope.login = {};
         $scope.customFormOptions = angular.copy(ngFabForm.config);

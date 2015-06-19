@@ -30,21 +30,22 @@
                     Compose Blog
                 </h2>
             </div>
+       <form class="form-horizontal">
             <div class="mail-box">
 
 
                 <div class="mail-body">
 
-                    <form class="form-horizontal" method="get">
-                        <div class="form-group"><label class="col-sm-2 control-label">To:</label>
+                    
+                        <div class="form-group"><label class="col-sm-2 control-label">Title:</label>
 
-                            <div class="col-sm-10"><input ng-model="createblog.title" type="text" class="form-control"></div>
+                            <div class="col-sm-10"><input ng-maxlength="40" ng-model="createblog.title" type="text" class="form-control"></div>
                         </div>
-                        <div class="form-group"><label class="col-sm-2 control-label">Subject:</label>
+                        <div class="form-group"><label class="col-sm-2 control-label">Tags:</label>
 
-                            <div class="col-sm-10"><input ng-model="createblog.tags" type="text" class="form-control"></div>
+                            <div class="col-sm-10"><input ng-maxlength="40"  ng-model="createblog.tags" type="text" class="form-control"></div>
                         </div>
-                    </form>
+                   
 
                 </div>
 
@@ -64,6 +65,7 @@
 
 
             </div>
+            </form>
         </div>
 </div>
 </div>

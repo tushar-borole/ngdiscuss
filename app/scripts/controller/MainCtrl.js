@@ -6,9 +6,12 @@ Copyright:Copyright:Karma Worldwide Inc. 2014*/
 /**
  * MainCtrl - controller
  */
-app.controller('MainCtrl', ['$scope', '$http', 'ipCookie', '$state', 'APP_CONSTANTVALUE',
-function ($scope, $http, ipCookie, $state, APP_CONSTANTVALUE) {
+app.controller('MainCtrl', ['$scope', '$http', 'ipCookie', '$state', 'APP_CONSTANTVALUE','$rootScope',
+function ($scope, $http, ipCookie, $state, APP_CONSTANTVALUE,$rootScope) {
         $scope.menbarJson = [];
+    $rootScope.userData=ipCookie('auth');
+    $http.defaults.headers.common[APP_CONSTANTVALUE.token]=ipCookie('auth').token
+    console.log($rootScope.userData)
 
         /*Sidebar json is loaded to generate sidebar from static json*/
         $http.get("json/menubar.json").success(function (data) {

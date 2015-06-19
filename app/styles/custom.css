@@ -6,26 +6,24 @@ Copyright:Karma Worldwide Inc. 2014*/
   box-sizing: border-box;
 }
 
-html {
-  overflow-y: scroll;
-}
 
-body {
+
+.login {
   background: #c1bdba;
   font-family: 'Titillium Web', sans-serif;
 }
 
-a {
+.login a {
   text-decoration: none;
   color: #1ab188;
   -webkit-transition: .5s ease;
           transition: .5s ease;
 }
-a:hover {
+.login a:hover {
   color: #179b77;
 }
 
-.form {
+.login .form {
   background: rgba(19, 35, 47, 0.9);
   padding: 40px;
   max-width: 600px;
@@ -33,17 +31,17 @@ a:hover {
   box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
 }
 
-.tab-group {
+.login .tab-group {
   list-style: none;
   padding: 0;
   margin: 0 0 40px 0;
 }
-.tab-group:after {
+.login .tab-group:after {
   content: "";
   display: table;
   clear: both;
 }
-.tab-group li a {
+.login .tab-group li a {
   display: block;
   text-decoration: none;
   padding: 15px;
@@ -57,27 +55,27 @@ a:hover {
   -webkit-transition: .5s ease;
           transition: .5s ease;
 }
-.tab-group li a:hover {
+.login .tab-group li a:hover {
   background: #179b77;
   color: #ffffff;
 }
-.tab-group .active a {
+.login .tab-group .active a {
   background: #1ab188;
   color: #ffffff;
 }
 
-.tab-content > div:last-child {
+.login .tab-content > div:last-child {
   display: none;
 }
 
-h1 {
+.login h1 {
   text-align: center;
   color: #ffffff;
   font-weight: 300;
   margin: 0 0 40px;
 }
 
-label {
+.login label {
   position: absolute;
   -webkit-transform: translateY(6px);
       -ms-transform: translateY(6px);
@@ -90,27 +88,27 @@ label {
   pointer-events: none;
   font-size: 22px;
 }
-label .req {
+.login label .req {
   margin: 2px;
   color: #1ab188;
 }
 
-label.active {
+.login label.active {
   -webkit-transform: translateY(50px);
       -ms-transform: translateY(50px);
           transform: translateY(50px);
   left: 2px;
   font-size: 14px;
 }
-label.active .req {
+.login label.active .req {
   opacity: 0;
 }
 
-label.highlight {
+.login label.highlight {
   color: #ffffff;
 }
 
-input, textarea {
+.login input, textarea {
   font-size: 22px;
   display: block;
   width: 100%;
@@ -124,36 +122,36 @@ input, textarea {
   -webkit-transition: border-color .25s ease, box-shadow .25s ease;
           transition: border-color .25s ease, box-shadow .25s ease;
 }
-input:focus, textarea:focus {
+.login input:focus, textarea:focus {
   outline: 0;
   border-color: #1ab188;
 }
 
-textarea {
+.login textarea {
   border: 2px solid #a0b3b0;
   resize: vertical;
 }
 
-.field-wrap {
+.login .field-wrap {
   position: relative;
   margin-bottom: 40px;
 }
 
-.top-row:after {
+.login .top-row:after {
   content: "";
   display: table;
   clear: both;
 }
-.top-row > div {
+.login .top-row > div {
   float: left;
   width: 48%;
   margin-right: 4%;
 }
-.top-row > div:last-child {
+.login .top-row > div:last-child {
   margin: 0;
 }
 
-.button {
+.login .button {
   border: 0;
   outline: none;
   border-radius: 0;
@@ -168,16 +166,16 @@ textarea {
           transition: all 0.5s ease;
   -webkit-appearance: none;
 }
-.button:hover, .button:focus {
+.login .button:hover, .button:focus {
   background: #179b77;
 }
 
-.button-block {
+.login .button-block {
   display: block;
   width: 100%;
 }
 
-.forgot {
+.login .forgot {
   margin-top: -20px;
   text-align: right;
 }
