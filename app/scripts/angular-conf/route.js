@@ -6,7 +6,7 @@ Copyright:Karma Worldwide Inc. 2014*/
 /*$stateProvider:- Provider service provided by angular ui router
 $translateProvider:-Provider service provided by angular translate
 ,APP_CONSTANT,APP_CONFIG:- Custom service import in config*/
-function config($stateProvider, $urlRouterProvider, $translateProvider, ngFabFormProvider, RestangularProvider, APP_CONSTANT, APP_CONFIG, $enviornment) {
+function config($stateProvider, $urlRouterProvider, $translateProvider, ngFabFormProvider, RestangularProvider, APP_CONSTANT, APP_CONFIG, $enviornment,$authProvider,APP_URL) {
     $urlRouterProvider.otherwise('/index/blog');
     $stateProvider
 
@@ -79,6 +79,30 @@ function config($stateProvider, $urlRouterProvider, $translateProvider, ngFabFor
         }
     };
     ngFabFormProvider.setInsertErrorTplFn(customInsertFn);
+    
+      console.log(window.location.href)
+ 
+    //$authProvider.authHeader = 'x-access-token';
+    //$authProvider.httpInterceptor = false; // Add Authorization header to HTTP request
+    //$authProvider.tokenPrefix = 'twitterAuth'; // Local Storage name prefix
+    //$authProvider.loginRedirect = false;
+
+  
+    $authProvider.facebook({
+        clientId: $enviornment.facebookAppId,
+        url: $enviornment.backendurl + APP_URL[$enviornment.urlname].facebookconnect
+      /*  authorizationEndpoint: 'https://www.facebook.com/v2.3/dialog/oauth',
+        redirectUri: window.location.origin + '/',
+        scope: 'publish_actions',
+        scopeDelimiter: ',',
+        requiredUrlParams: ['display', 'scope', 'publish'],
+        display: 'popup',
+        type: '2.0',
+        popupOptions: {
+            width: 481,
+            height: 269
+        }*/
+    });
 
 
 
@@ -109,7 +133,9 @@ app
         };
     
       $rootScope.$on('ngPermission', function (event,roles, defer,routeObject) {
+            if (angular.isDefined(ipCookie('auth'))) {
      $http.defaults.headers.common[APP_CONSTANTVALUE.token] = ipCookie('auth').token;
+            }
          defer.resolve();
        
     });

@@ -16,20 +16,19 @@
                     <i class="fa fa-sign-out"></i> New
                 </a>
             </li>
-            <li ng-show="userData.userdata" class="dropdown" dropdown>
+            <li ng-show="userData" class="dropdown" dropdown>
                 <a class="dropdown-toggle count-info" href dropdown-toggle>
-                    {{userData.userdata.firstname}}
+                    {{userData.firstname}}
                 </a>
                 <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                    <li><a ng-click="changeLanguage('en')">English</a>
+                    <li><a ng-click="logOut()">Log Out</a>
                     </li>
-                    <li><a ng-click="changeLanguage('es')">Spanish</a>
-                    </li>
+                 
                 </ul>
             </li>
 
-            <li ng-if="!userData.userdata.firstname">
-                <a href="" modal modal-size="md" modal-template="views/common/loginregister.modal.html" modal-scope="loginmodal">
+            <li ng-if="!userData.firstname">
+                <a href="" modal modal-size="sm" modal-template="views/common/loginregister.modal.html" modal-scope="loginModalInstance">
                     <i class="fa fa-sign-out"></i>Login
                 </a>
             </li>

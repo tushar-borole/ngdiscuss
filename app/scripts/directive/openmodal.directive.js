@@ -8,7 +8,7 @@
     modal.$inject = ['$timeout', '$modal', '$parse'];
 
     /* @ngInject */
-    function modal($timeout, $modal, $parse) {
+    function modal($timeout, $modal, $parse,$rootScope) {
         // Usage:
         //
         // Creates:
