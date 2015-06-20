@@ -2,7 +2,7 @@
   "facebookAppId" : "924688284262183",
   "jsonurl" : "",
   "name" : "production",
-  "backendurl" : "http://104.131.74.237/",
+  "backendurl" : "http://www.ngdiscuss.com/",
  "urlname":"development",
  "viewbasepath":"",
  "jsonpath":"/json/detailJson/"
