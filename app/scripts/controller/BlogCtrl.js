@@ -2,7 +2,7 @@ app.controller('BlogCtrl', ['$scope', '$http', 'ipCookie', '$state', 'APP_CONSTA
 function ($scope, $http, ipCookie, $state, APP_CONSTANTVALUE, blogFactory) {
 
 
-        $scope.blogData = ["1", "sd", "asd", "asda", "wer"];
+        $scope.blogData = [];
 
         $scope.getBlogs = function () {
             blogFactory.getBlog().then(function (data) {

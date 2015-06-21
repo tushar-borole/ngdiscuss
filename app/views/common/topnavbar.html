@@ -1,11 +1,12 @@
 <div class="row border-bottom">
     <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
+            <a ui-sref="index.blog">
             <img style="width: 167px; margin-top: 17px; margin-left: 10px;" class="pull-left" src="../../images/coollogo_com-30759808.png">
+                </a>
 
         </div>
 
-        
         <ul class="nav navbar-top-links navbar-right">
             <!--<li>-->
             <!--<span class="m-r-sm text-muted welcome-message">Welcome to INSPINIA+ Admin Theme.</span>-->
@@ -16,9 +17,9 @@
                     <i class="fa fa-sign-out"></i> New
                 </a>
             </li>
-            <li ng-show="userData" class="dropdown" dropdown>
+            <li ng-show="userData.user" class="dropdown" dropdown>
                 <a class="dropdown-toggle count-info" href dropdown-toggle>
-                    {{userData.firstname}}
+                    {{userData.user.firstname}}
                 </a>
                 <ul class="dropdown-menu animated fadeInRight m-t-xs">
                     <li><a ng-click="logOut()">Log Out</a>
@@ -27,7 +28,7 @@
                 </ul>
             </li>
 
-            <li ng-if="!userData.firstname">
+            <li ng-if="!userData.user.firstname">
                 <a href="" modal modal-size="sm" modal-template="views/common/loginregister.modal.html" modal-scope="loginModalInstance">
                     <i class="fa fa-sign-out"></i>Login
                 </a>
@@ -41,15 +42,15 @@
                     <i class="fa fa-sign-out"></i> New
                 </a>
             </li>
-            <li ng-hide="userData.userdata">
+            <li ng-hide="userData.user.userData.user">
                 <a class="pull-right" modal modal-size="md" modal-template="views/common/loginregister.modal.html" modal-scope="loginmodal" href="">
                     <i class="fa fa-sign-out"></i> Login
                 </a>
               
             </li>
-              <li ng-show="userData.userdata" class="dropdown" dropdown>
+              <li ng-show="userData.user.userData.user" class="dropdown" dropdown>
                 <a class="dropdown-toggle count-info" href dropdown-toggle>
-                    {{userData.userdata.firstname}}
+                    {{userData.user.userData.user.firstname}}
                 </a>
                 <ul class="dropdown-menu animated fadeInRight m-t-xs" >
                     <li><a ng-click="changeLanguage('en')">English</a>

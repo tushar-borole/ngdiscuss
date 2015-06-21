@@ -6,26 +6,30 @@ Copyright:Copyright:Karma Worldwide Inc. 2014*/
 /**
  * MainCtrl - controller
  */
-app.controller('MainCtrl', ['$scope', '$http', 'ipCookie', '$state', 'APP_CONSTANTVALUE', '$rootScope', '$auth', 'Restangular','$rootScope',
-function ($scope, $http, ipCookie, $state, APP_CONSTANTVALUE, $rootScope, $auth, Restangular,$rootScope) {
+app.controller('MainCtrl', ['$scope', '$http', 'ipCookie', '$state', 'APP_CONSTANTVALUE', '$rootScope', '$auth', 'Restangular', '$rootScope', 'localStorageService',
+function ($scope, $http, ipCookie, $state, APP_CONSTANTVALUE, $rootScope, $auth, Restangular, $rootScope, localStorageService) {
         $scope.menbarJson = [];
-        $rootScope.userData = ipCookie('auth');
-        if (angular.isDefined(ipCookie('auth'))) {
-            $http.defaults.headers.common[APP_CONSTANTVALUE.token] = ipCookie('auth').token;
-            $rootScope.userData=ipCookie('auth').user
+        localStorageService.bind($rootScope, 'userData', null, 'auth');
+        if (angular.isDefined($rootScope.userData)) {
+            $http.defaults.headers.common[APP_CONSTANTVALUE.token] = $rootScope.userData.token;
+
         }
-     
+
 
         /*Sidebar json is loaded to generate sidebar from static json*/
         $http.get("json/menubar.json").success(function (data) {
             $scope.menubarJson = data;
         });
 
+
+
         $scope.loginUser = function () {
 
             $auth.authenticate('facebook').then(function (response) {
-                ipCookie('auth', response.data);
-              $rootScope.userData=response.data.user
+
+                localStorageService.bind($rootScope, 'userData', response.data, 'auth');
+                    $http.defaults.headers.common[APP_CONSTANTVALUE.token] = response.data.token;
+
             });
 
 
@@ -37,7 +41,7 @@ function ($scope, $http, ipCookie, $state, APP_CONSTANTVALUE, $rootScope, $auth,
         /*function to logout from application*/
         $scope.logOut = function () {
 
-            ipCookie.remove('auth');
+            localStorageService.remove('auth');
             delete $http.defaults.headers.common[APP_CONSTANTVALUE.token];
             $rootScope.userData = {};
 

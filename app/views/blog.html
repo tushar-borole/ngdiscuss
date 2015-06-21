@@ -3,7 +3,7 @@
         <div class="col-lg-4" ng-repeat="data in blogData">
             <div class="ibox">
                 <div class="ibox-content">
-                    <a ui-sref="index.article" class="btn-link">
+                    <a ui-sref="index.article({blogid: data.id})" class="btn-link">
                         <h2>
                             {{::data.title}}
                         </h2>
@@ -11,14 +11,13 @@
                     <div class="small m-b-xs">
                         <strong>{{::data.User.firstname}} {{::data.User.lastname}}</strong> <span class="text-muted"><i class="fa fa-clock-o"></i> {{::data.created_at|date:'mediumDate'}}</span>
                     </div>
-                    <p ng-bind-html="::data.body">
+                    <p style="overflow: hidden; height: 228px;" ng-bind-html="::data.body">
                       
                     </p>
                     <div class="row">
                         <div class="col-md-6">
                             <h5>Tags:</h5>
-                            <button class="btn btn-primary btn-xs" type="button">Model</button>
-                            <button class="btn btn-white btn-xs" type="button">Publishing</button>
+                            <button style="margin-right:5px" ng-repeat="tag in ::data.tags|split:','" class="btn mr5 btn-primary btn-xs" type="button">{{tag}}</button>
                         </div>
                         <div class="col-md-6">
                             <div class="small text-right">
@@ -29,7 +28,7 @@
                         </div>
                     </div>
                 </div>
-                  <div class="social-footer">
+                <!--  <div class="social-footer">
                     <div class="social-comment" ng-repeat="comment in data.Comments">
                         <a class="pull-left" href="">
                             <img src="../images/a1.jpg" alt="image">
@@ -56,7 +55,7 @@
                         </div>
                     </div>
 
-                </div>
+                </div>-->
             </div>
           
          

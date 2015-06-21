@@ -1,24 +1,26 @@
-app.controller('BlogDetailsCtrl', ['$scope', '$http', 'ipCookie', '$state', 'APP_CONSTANTVALUE', 'blogdetailsFactory','commentFactory',
-function ($scope, $http, ipCookie, $state, APP_CONSTANTVALUE, blogdetailsFactory,commentFactory) {
+app.controller('BlogDetailsCtrl', ['$scope', '$http', 'ipCookie', '$state', 'APP_CONSTANTVALUE', 'blogdetailsFactory', 'commentFactory', '$stateParams',
+function ($scope, $http, ipCookie, $state, APP_CONSTANTVALUE, blogdetailsFactory, commentFactory, $stateParams) {
 
 
-$scope.comment={}
+        $scope.comment = {};
+        $scope.commentData = []
         $scope.getBlogsDetails = function () {
-            blogdetailsFactory.blogdetailsFactory(1).then(function (data) {
+            blogdetailsFactory.blogdetailsFactory($stateParams.blogid).then(function (data) {
                 $scope.blogDetailsData = data.response;
             }, function () {
 
             });
 
         }
-        
+        console.log($stateParams)
+
         $scope.getComment = function () {
 
-            commentFactory.getComment(1).then(function (data) {
-              $scope.commentData=data.response;
+            commentFactory.getComment($stateParams.blogid).then(function (data) {
+                $scope.commentData = data.response;
 
             }, function () {
-        
+
             });
 
 
@@ -28,15 +30,15 @@ $scope.comment={}
 
         $scope.addComment = function () {
 
-            commentFactory.addComment(1,$scope.comment).then(function () {
-                
+            commentFactory.addComment($stateParams.blogid, $scope.comment).then(function (data) {
+                $scope.getComment();
             }, function () {
 
             });
 
 
         };
-    $scope.getComment()
+        $scope.getComment()
         $scope.getBlogsDetails();
 
 

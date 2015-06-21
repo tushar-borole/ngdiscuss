@@ -6,7 +6,7 @@ Copyright:Karma Worldwide Inc. 2014*/
 /*$stateProvider:- Provider service provided by angular ui router
 $translateProvider:-Provider service provided by angular translate
 ,APP_CONSTANT,APP_CONFIG:- Custom service import in config*/
-function config($stateProvider, $urlRouterProvider, $translateProvider, ngFabFormProvider, RestangularProvider, APP_CONSTANT, APP_CONFIG, $enviornment,$authProvider,APP_URL) {
+function config($stateProvider, $urlRouterProvider, $translateProvider, ngFabFormProvider, RestangularProvider, APP_CONSTANT, APP_CONFIG, $enviornment, $authProvider, APP_URL) {
     $urlRouterProvider.otherwise('/index/blog');
     $stateProvider
 
@@ -24,9 +24,9 @@ function config($stateProvider, $urlRouterProvider, $translateProvider, ngFabFor
             }
         })
         .state('index.article', {
-            url: "/article",
+            url: "/article/:blogid",
             templateUrl: "views/article.html",
-        controller:"BlogDetailsCtrl",
+            controller: "BlogDetailsCtrl",
             data: {
                 pageTitle: 'Example view'
             }
@@ -79,29 +79,29 @@ function config($stateProvider, $urlRouterProvider, $translateProvider, ngFabFor
         }
     };
     ngFabFormProvider.setInsertErrorTplFn(customInsertFn);
-    
-      console.log(window.location.href)
- 
+
+    console.log(window.location.href)
+
     //$authProvider.authHeader = 'x-access-token';
     //$authProvider.httpInterceptor = false; // Add Authorization header to HTTP request
     //$authProvider.tokenPrefix = 'twitterAuth'; // Local Storage name prefix
     //$authProvider.loginRedirect = false;
 
-  
+
     $authProvider.facebook({
         clientId: $enviornment.facebookAppId,
         url: $enviornment.backendurl + APP_URL[$enviornment.urlname].facebookconnect
-      /*  authorizationEndpoint: 'https://www.facebook.com/v2.3/dialog/oauth',
-        redirectUri: window.location.origin + '/',
-        scope: 'publish_actions',
-        scopeDelimiter: ',',
-        requiredUrlParams: ['display', 'scope', 'publish'],
-        display: 'popup',
-        type: '2.0',
-        popupOptions: {
-            width: 481,
-            height: 269
-        }*/
+            /*  authorizationEndpoint: 'https://www.facebook.com/v2.3/dialog/oauth',
+              redirectUri: window.location.origin + '/',
+              scope: 'publish_actions',
+              scopeDelimiter: ',',
+              requiredUrlParams: ['display', 'scope', 'publish'],
+              display: 'popup',
+              type: '2.0',
+              popupOptions: {
+                  width: 481,
+                  height: 269
+              }*/
     });
 
 
@@ -111,7 +111,7 @@ function config($stateProvider, $urlRouterProvider, $translateProvider, ngFabFor
 }
 app
     .config(config)
-    .run(function ($rootScope, $state, APP_CONSTANTVALUE, $enviornment, errorShipper,$http,ipCookie) {
+    .run(function ($rootScope, $state, APP_CONSTANTVALUE, $enviornment, $http, ipCookie, dataFactory) {
         $rootScope.$state = $state;
         /*fallback image in application*/
         $rootScope.fallbackimage = {};
@@ -131,20 +131,24 @@ app
           ['height', ['height']]
         ]
         };
-    
-      $rootScope.$on('ngPermission', function (event,roles, defer,routeObject) {
-            if (angular.isDefined(ipCookie('auth'))) {
-     $http.defaults.headers.common[APP_CONSTANTVALUE.token] = ipCookie('auth').token;
-            }
-         defer.resolve();
-       
-    });
 
-        //custome error shipper angular
-        errorShipper.use(function (payload) {
-            console.log(payload)
-                // do something with payload
+        $rootScope.$on('ngPermission', function (event, roles, defer, routeObject) {
+            if (angular.isDefined(ipCookie('auth'))) {
+                $http.defaults.headers.common[APP_CONSTANTVALUE.token] = ipCookie('auth').token;
+            }
+            dataFactory.loggedInuser().then(function (data) {
+              
+                defer.resolve();
+            }, function () {
+                $state.go('index.blog')
+
+            })
+
+
+
         });
+
+
 
         console.log(window.location)
 
