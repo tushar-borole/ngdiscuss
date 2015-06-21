@@ -210,7 +210,7 @@ module.exports = function (grunt) {
         /*uglify configuration*/
         uglify: {
             options: {
-                mangle: true
+                mangle: false
             }
         },
 
