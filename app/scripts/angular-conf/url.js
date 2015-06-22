@@ -12,7 +12,7 @@ app.constant('APP_URL', {
          'getblogdetails':'api/blog/{{blogid}}',
         'createcomment':'api/blog/{{blogid}}/comment',
         'getcomment':'api/blog/{{blogid}}/comment',
-        'facebookconnect':'auth/facebook'
+        'facebookconnect':'api/facebook'
 
     },
     'mock': {
