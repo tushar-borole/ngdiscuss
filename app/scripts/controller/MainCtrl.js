@@ -10,7 +10,8 @@ app.controller('MainCtrl', ['$scope', '$http', 'ipCookie', '$state', 'APP_CONSTA
 function ($scope, $http, ipCookie, $state, APP_CONSTANTVALUE, $rootScope, $auth, Restangular, $rootScope, localStorageService) {
         $scope.menbarJson = [];
         localStorageService.bind($rootScope, 'userData', null, 'auth');
-        if (angular.isDefined($rootScope.userData)) {
+    $rootScope.userData=null;
+        if (!_.isEmpty($rootScope.userData)) {
             $http.defaults.headers.common[APP_CONSTANTVALUE.token] = $rootScope.userData.token;
 
         }
